@@ -2,9 +2,9 @@
 
 ## Overview
 
-This project investigates how different app interventions affect long-term user retention using a Reinforcement Learning (RL) framework. Specifically, we model user engagement and churn as a **Markov Decision Process (MDP)** and train a **Deep Q-Network (DQN)** agent to learn optimal intervention strategies.
+This project investigates how different app interventions affect long-term user retention using Reinforcement Learning (RL). User engagement and churn are modeled as a **Markov Decision Process (MDP)**, and a **Deep Q-Network (DQN)** is trained to learn optimal intervention strategies.
 
-The study explores how app creators can balance engagement gains with user fatigue through interventions such as:
+The intervention space includes:
 
 * Push notifications
 * Feature additions
@@ -12,7 +12,7 @@ The study explores how app creators can balance engagement gains with user fatig
 * Combined interventions
 * No intervention
 
-Results suggest that a **conservative policy emphasizing inaction** is often optimal, while stronger interventions should be reserved for users with low engagement or elevated churn risk.
+Results indicate that a **conservative policy emphasizing inaction** is often optimal, while stronger interventions should be reserved for users with low engagement or elevated churn risk.
 
 ---
 
@@ -20,11 +20,11 @@ Results suggest that a **conservative policy emphasizing inaction** is often opt
 
 Modern applications rely heavily on recommendation systems, notifications, and engagement algorithms to retain users. However, excessive interventions may lead to user fatigue and eventual churn.
 
-This project asks:
+This project investigates the following research question:
 
 > **How should app creators optimally intervene to maximize long-term retention while minimizing user fatigue?**
 
-To answer this question, we formulate user retention as a sequential decision-making problem under uncertainty.
+To answer this question, user retention is formulated as a sequential decision-making problem under uncertainty.
 
 ---
 
@@ -40,7 +40,7 @@ The environment is modeled as an MDP consisting of five components:
 4. Reward Function
 5. Transition Probabilities
 
-The app creator acts as the **agent**, while the application ecosystem and users form the **environment**.
+The **agent** represents the app creator, while the **environment** consists of users and the application ecosystem.
 
 ---
 
@@ -56,16 +56,16 @@ The app creator acts as the **agent**, while the application ecosystem and users
 
 The user state is defined as:
 
-[
+```
 s_t = (e_t, f_t, u_t, c_t)
-]
+```
 
 where:
 
-* (e_t \in [0,1]): user engagement
-* (f_t \in [0,1]): user fatigue
-* (u_t \in {\text{active, moderate, declining}}): user stage
-* (c_t \in {0,1,2,3,4,5}): churn counter
+* `e_t ∈ [0,1]`: user engagement
+* `f_t ∈ [0,1]`: user fatigue
+* `u_t ∈ {active, moderately engaged, declining}`: user stage
+* `c_t ∈ {0,1,2,3,4,5}`: churn counter
 
 ---
 
@@ -84,35 +84,26 @@ The agent may select one of six interventions:
 
 Each action is associated with:
 
-* Engagement boost ((\alpha_a))
-* Fatigue increase ((\delta_a))
-* Intervention cost ((c(a)))
+* Engagement boost (`α_a`)
+* Fatigue increase (`δ_a`)
+* Intervention cost (`c(a)`)
 
 ---
 
 ### Reward Function
 
-The reward function is defined as:
+The reward function is:
 
-[
-r_t
-===
-
-## e_{t+1}
-
-## \lambda f_{t+1}
-
-## c(a_t)
-
-\kappa \mathbf{1}_{\text{churn}}
-]
+```
+r_t = e_(t+1) - λf_(t+1) - c(a_t) - κI_churn
+```
 
 where:
 
 * Higher engagement increases reward
 * Fatigue incurs penalties
 * Interventions have operational costs
-* Churn receives a large penalty ((\kappa = 7))
+* Churn receives a large penalty (`κ = 7`)
 
 This reward structure encourages:
 
@@ -127,27 +118,19 @@ This reward structure encourages:
 
 #### Engagement Transition
 
-User engagement evolves according to:
+User engagement evolves according to a Gaussian process:
 
-[
-e_{t+1} \sim \mathcal{N}(\mu_t,\sigma^2)
-]
+```
+e_(t+1) ~ N(μ_t, σ²)
+```
 
-where
+with mean
 
-[
-\mu_t
-=====
-
-e_t
-+
-\alpha_a(1-0.6f_t)
-------------------
-
-## \beta f_t^{1.05}
-
-\eta(e_t-\bar e_u)
-]
+```
+μ_t = e_t + α_a(1 - 0.6f_t)
+      - βf_t^1.05
+      - η(e_t - ē_u)
+```
 
 This incorporates:
 
@@ -160,14 +143,11 @@ This incorporates:
 
 #### Fatigue Transition
 
-Fatigue evolves as:
+Fatigue evolves according to:
 
-[
-f_{t+1}
-=======
-
-\min(1,\gamma f_t+\delta_a)
-]
+```
+f_(t+1) = min(1, γf_t + δ_a)
+```
 
 capturing:
 
@@ -178,11 +158,11 @@ capturing:
 
 #### Churn Dynamics
 
-Users enter an absorbing churn state if engagement remains below threshold for five consecutive time steps:
+Users enter an absorbing churn state when engagement remains below threshold for five consecutive time steps:
 
-[
-c_t \ge 5
-]
+```
+c_t ≥ 5
+```
 
 Once churn occurs:
 
@@ -197,7 +177,7 @@ The MDP is solved using **Deep Q-Learning (DQN)**.
 
 ### Why DQN?
 
-Traditional Q-learning becomes infeasible due to continuous state variables such as engagement and fatigue.
+Traditional tabular Q-learning becomes infeasible due to continuous state variables such as engagement and fatigue.
 
 DQN enables:
 
@@ -216,14 +196,14 @@ DQN enables:
 * Experience replay buffer
 * Target network updates
 
-Input features:
+**Input features:**
 
 * Engagement
 * Fatigue
 * Normalized churn risk
 * One-hot encoded user stage
 
-Output:
+**Output:**
 
 * Estimated Q-values for six actions
 
@@ -233,22 +213,22 @@ Output:
 
 ### Training Parameters
 
-| Parameter                  | Value   |
-| -------------------------- | ------- |
-| Episodes                   | 5,000   |
-| Horizon                    | 50 days |
-| Discount factor ((\gamma)) | 0.95    |
-| Learning rate              | 0.001   |
-| Batch size                 | 64      |
-| Replay buffer              | 50,000  |
-| Target update frequency    | 50      |
+| Parameter               | Value   |
+| ----------------------- | ------- |
+| Episodes                | 5,000   |
+| Horizon                 | 50 days |
+| Discount factor (γ)     | 0.95    |
+| Learning rate           | 0.001   |
+| Batch size              | 64      |
+| Replay buffer           | 50,000  |
+| Target update frequency | 50      |
 
-### Exploration
+### Exploration Policy
 
-The agent follows an epsilon-greedy policy:
+The agent follows an epsilon-greedy strategy:
 
-* Initial (\epsilon = 0.20)
-* Minimum (\epsilon = 0.02)
+* Initial ε = 0.20
+* Minimum ε = 0.02
 
 ---
 
@@ -256,12 +236,12 @@ The agent follows an epsilon-greedy policy:
 
 Four ablation studies were conducted:
 
-1. **No Exploration** ((\epsilon = 0))
-2. **Lower Churn Penalty** ((\kappa = 3))
-3. **Higher Churn Penalty** ((\kappa = 12))
+1. **No Exploration** (`ε = 0`)
+2. **Lower Churn Penalty** (`κ = 3`)
+3. **Higher Churn Penalty** (`κ = 12`)
 4. **Removal of Churn State**
 
-These experiments evaluated the sensitivity of policy behavior to exploration and churn modeling.
+These experiments evaluated the sensitivity of learned policies to exploration and churn modeling.
 
 ---
 
@@ -287,7 +267,7 @@ The learned policy favored:
 * User fatigue plays a critical role in retention.
 * Moderate churn penalties produce the best balance.
 * Exploration is necessary to avoid suboptimal policies.
-* Conservative strategies outperform aggressive intervention policies.
+* Conservative strategies outperform aggressive intervention strategies.
 
 ---
 
@@ -308,12 +288,10 @@ Future work may incorporate:
 
 ## References
 
-Key references include:
-
-* Sutton & Barto (2018), *Reinforcement Learning: An Introduction*
-* Mnih et al. (2015), *Human-Level Control Through Deep Reinforcement Learning*
-* Wang et al. (2021), *Long-Term Recommender Systems*
-* Zhao et al. (2018), *Page-Wise Recommendations*
-* O'Brien et al. (2022), *Push Notification Optimization*
+* Sutton, R. S., & Barto, A. G. (2018). *Reinforcement Learning: An Introduction.*
+* Mnih, V. et al. (2015). *Human-Level Control Through Deep Reinforcement Learning.*
+* Wang, J. et al. (2021). *A Deep Reinforcement Learning Based Long-Term Recommender System.*
+* Zhao, X. et al. (2018). *Deep Reinforcement Learning for Page-Wise Recommendations.*
+* O'Brien, C. et al. (2022). *Optimizing Push Notification Decision Making by Modeling the Future.*
 
 ---
