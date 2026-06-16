@@ -56,16 +56,16 @@ The app creator acts as the **agent**, while the application ecosystem and users
 
 The user state is defined as:
 
-[
+$$
 s_t = (e_t, f_t, u_t, c_t)
-]
+$$
 
 where:
 
-* (e_t \in [0,1]): user engagement
-* (f_t \in [0,1]): user fatigue
-* (u_t \in {\text{active, moderate, declining}}): user stage
-* (c_t \in {0,1,2,3,4,5}): churn counter
+- $e_t \in [0,1]$: user engagement
+- $f_t \in [0,1]$: user fatigue
+- $u_t \in \{\text{active}, \text{moderately engaged}, \text{declining}\}$: user stage
+- $c_t \in \{0,1,2,3,4,5\}$: churn counter
 
 ---
 
@@ -94,25 +94,24 @@ Each action is associated with:
 
 The reward function is defined as:
 
-[
+$$
 r_t
-===
-
-## e_{t+1}
-
-## \lambda f_{t+1}
-
-## c(a_t)
-
+=
+e_{t+1}
+-
+\lambda f_{t+1}
+-
+c(a_t)
+-
 \kappa \mathbf{1}_{\text{churn}}
-]
+$$
 
 where:
 
 * Higher engagement increases reward
 * Fatigue incurs penalties
 * Interventions have operational costs
-* Churn receives a large penalty ((\kappa = 7))
+* Churn receives a large penalty ($\kappa = 7$)
 
 This reward structure encourages:
 
@@ -129,25 +128,23 @@ This reward structure encourages:
 
 User engagement evolves according to:
 
-[
+$$
 e_{t+1} \sim \mathcal{N}(\mu_t,\sigma^2)
-]
+$$
 
 where
 
-[
+$$
 \mu_t
-=====
-
+=
 e_t
 +
 \alpha_a(1-0.6f_t)
-------------------
-
-## \beta f_t^{1.05}
-
+-
+\beta f_t^{1.05}
+-
 \eta(e_t-\bar e_u)
-]
+$$
 
 This incorporates:
 
@@ -162,12 +159,11 @@ This incorporates:
 
 Fatigue evolves as:
 
-[
+$$
 f_{t+1}
-=======
-
+=
 \min(1,\gamma f_t+\delta_a)
-]
+$$
 
 capturing:
 
@@ -180,9 +176,9 @@ capturing:
 
 Users enter an absorbing churn state if engagement remains below threshold for five consecutive time steps:
 
-[
+$$
 c_t \ge 5
-]
+$$
 
 Once churn occurs:
 
@@ -237,7 +233,7 @@ Output:
 | -------------------------- | ------- |
 | Episodes                   | 5,000   |
 | Horizon                    | 50 days |
-| Discount factor ((\gamma)) | 0.95    |
+| Discount factor ($\gamma$) | 0.95    |
 | Learning rate              | 0.001   |
 | Batch size                 | 64      |
 | Replay buffer              | 50,000  |
@@ -247,8 +243,8 @@ Output:
 
 The agent follows an epsilon-greedy policy:
 
-* Initial (\epsilon = 0.20)
-* Minimum (\epsilon = 0.02)
+* Initial $\epsilon = 0.20$
+* Minimum $\epsilon = 0.02$
 
 ---
 
@@ -256,9 +252,9 @@ The agent follows an epsilon-greedy policy:
 
 Four ablation studies were conducted:
 
-1. **No Exploration** ((\epsilon = 0))
-2. **Lower Churn Penalty** ((\kappa = 3))
-3. **Higher Churn Penalty** ((\kappa = 12))
+1. No Exploration ($\epsilon = 0$)
+2. Lower Churn Penalty ($\kappa = 3$)
+3. Higher Churn Penalty ($\kappa = 12$)
 4. **Removal of Churn State**
 
 These experiments evaluated the sensitivity of policy behavior to exploration and churn modeling.
