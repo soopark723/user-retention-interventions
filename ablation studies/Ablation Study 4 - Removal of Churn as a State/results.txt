@@ -1,0 +1,163 @@
+Training DQN with online environment interaction...
+Episode 0 | Epsilon 0.200 | Reward 20.22
+Episode 50 | Epsilon 0.156 | Reward 19.96
+Episode 100 | Epsilon 0.121 | Reward 4.41
+Episode 150 | Epsilon 0.094 | Reward 22.35
+Episode 200 | Epsilon 0.073 | Reward 19.02
+Episode 250 | Epsilon 0.057 | Reward 9.43
+Episode 300 | Epsilon 0.044 | Reward 29.16
+Episode 350 | Epsilon 0.035 | Reward 28.28
+Episode 400 | Epsilon 0.027 | Reward 15.41
+Episode 450 | Epsilon 0.021 | Reward 16.32
+Episode 500 | Epsilon 0.020 | Reward 38.08
+Episode 550 | Epsilon 0.020 | Reward 26.51
+Episode 600 | Epsilon 0.020 | Reward -5.55
+Episode 650 | Epsilon 0.020 | Reward 25.29
+Episode 700 | Epsilon 0.020 | Reward 28.30
+Episode 750 | Epsilon 0.020 | Reward 34.43
+Episode 800 | Epsilon 0.020 | Reward 41.22
+Episode 850 | Epsilon 0.020 | Reward 32.54
+Episode 900 | Epsilon 0.020 | Reward 27.39
+Episode 950 | Epsilon 0.020 | Reward 24.89
+Episode 1000 | Epsilon 0.020 | Reward 31.52
+Episode 1050 | Epsilon 0.020 | Reward 26.75
+Episode 1100 | Epsilon 0.020 | Reward 29.62
+Episode 1150 | Epsilon 0.020 | Reward 29.50
+Episode 1200 | Epsilon 0.020 | Reward 31.47
+Episode 1250 | Epsilon 0.020 | Reward 25.91
+Episode 1300 | Epsilon 0.020 | Reward 33.08
+Episode 1350 | Epsilon 0.020 | Reward 28.84
+Episode 1400 | Epsilon 0.020 | Reward 32.05
+Episode 1450 | Epsilon 0.020 | Reward 33.40
+Episode 1500 | Epsilon 0.020 | Reward 34.05
+Episode 1550 | Epsilon 0.020 | Reward 25.52
+Episode 1600 | Epsilon 0.020 | Reward 26.75
+Episode 1650 | Epsilon 0.020 | Reward 21.72
+Episode 1700 | Epsilon 0.020 | Reward 24.47
+Episode 1750 | Epsilon 0.020 | Reward -4.37
+Episode 1800 | Epsilon 0.020 | Reward 38.86
+Episode 1850 | Epsilon 0.020 | Reward 19.24
+Episode 1900 | Epsilon 0.020 | Reward 28.39
+Episode 1950 | Epsilon 0.020 | Reward 18.03
+Episode 2000 | Epsilon 0.020 | Reward 29.94
+Episode 2050 | Epsilon 0.020 | Reward 25.86
+Episode 2100 | Epsilon 0.020 | Reward 26.40
+Episode 2150 | Epsilon 0.020 | Reward 22.40
+Episode 2200 | Epsilon 0.020 | Reward 19.36
+Episode 2250 | Epsilon 0.020 | Reward 37.03
+Episode 2300 | Epsilon 0.020 | Reward 30.78
+Episode 2350 | Epsilon 0.020 | Reward 19.58
+Episode 2400 | Epsilon 0.020 | Reward 28.78
+Episode 2450 | Epsilon 0.020 | Reward 26.77
+Episode 2500 | Epsilon 0.020 | Reward 32.99
+Episode 2550 | Epsilon 0.020 | Reward 25.13
+Episode 2600 | Epsilon 0.020 | Reward 26.34
+Episode 2650 | Epsilon 0.020 | Reward 35.82
+Episode 2700 | Epsilon 0.020 | Reward 28.80
+Episode 2750 | Epsilon 0.020 | Reward -5.85
+Episode 2800 | Epsilon 0.020 | Reward 37.91
+Episode 2850 | Epsilon 0.020 | Reward -6.50
+Episode 2900 | Epsilon 0.020 | Reward 28.16
+Episode 2950 | Epsilon 0.020 | Reward 30.83
+Episode 3000 | Epsilon 0.020 | Reward 21.56
+Episode 3050 | Epsilon 0.020 | Reward 21.95
+Episode 3100 | Epsilon 0.020 | Reward -1.16
+Episode 3150 | Epsilon 0.020 | Reward 20.00
+Episode 3200 | Epsilon 0.020 | Reward 29.04
+Episode 3250 | Epsilon 0.020 | Reward 27.53
+Episode 3300 | Epsilon 0.020 | Reward 27.16
+Episode 3350 | Epsilon 0.020 | Reward 25.39
+Episode 3400 | Epsilon 0.020 | Reward 23.41
+Episode 3450 | Epsilon 0.020 | Reward 27.59
+Episode 3500 | Epsilon 0.020 | Reward 30.20
+Episode 3550 | Epsilon 0.020 | Reward 21.46
+Episode 3600 | Epsilon 0.020 | Reward 32.34
+Episode 3650 | Epsilon 0.020 | Reward 18.92
+Episode 3700 | Epsilon 0.020 | Reward 23.04
+Episode 3750 | Epsilon 0.020 | Reward 38.19
+Episode 3800 | Epsilon 0.020 | Reward 21.32
+Episode 3850 | Epsilon 0.020 | Reward -2.82
+Episode 3900 | Epsilon 0.020 | Reward 23.70
+Episode 3950 | Epsilon 0.020 | Reward 21.71
+Episode 4000 | Epsilon 0.020 | Reward 31.82
+Episode 4050 | Epsilon 0.020 | Reward 25.40
+Episode 4100 | Epsilon 0.020 | Reward 24.33
+Episode 4150 | Epsilon 0.020 | Reward 35.43
+Episode 4200 | Epsilon 0.020 | Reward 0.53
+Episode 4250 | Epsilon 0.020 | Reward 26.65
+Episode 4300 | Epsilon 0.020 | Reward 25.34
+Episode 4350 | Epsilon 0.020 | Reward 27.51
+Episode 4400 | Epsilon 0.020 | Reward 22.94
+Episode 4450 | Epsilon 0.020 | Reward 28.22
+Episode 4500 | Epsilon 0.020 | Reward 25.02
+Episode 4550 | Epsilon 0.020 | Reward 20.80
+Episode 4600 | Epsilon 0.020 | Reward 26.82
+Episode 4650 | Epsilon 0.020 | Reward 27.77
+Episode 4700 | Epsilon 0.020 | Reward 24.72
+Episode 4750 | Epsilon 0.020 | Reward 33.76
+Episode 4800 | Epsilon 0.020 | Reward 14.12
+Episode 4850 | Epsilon 0.020 | Reward 30.02
+Episode 4900 | Epsilon 0.020 | Reward 24.90
+Episode 4950 | Epsilon 0.020 | Reward 32.99
+Training complete!
+Saved simulated_data.json
+
+Generating visualizations...
+Saved: retention_curve.png
+Saved: avg_engagement.png
+Saved: avg_fatigue.png
+
+Learned policy samples (engagement, fatigue, action):
+e=0.00, f=0.00 → action: incentive
+e=0.00, f=0.11 → action: incentive
+e=0.00, f=0.22 → action: incentive
+e=0.00, f=0.33 → action: incentive
+e=0.00, f=0.44 → action: notify+incentive
+e=0.00, f=0.56 → action: notify+incentive
+e=0.00, f=0.67 → action: notify+incentive
+e=0.00, f=0.78 → action: notify+incentive
+e=0.00, f=0.89 → action: notify+incentive
+e=0.00, f=1.00 → action: notify+incentive
+e=0.11, f=0.00 → action: feature
+e=0.11, f=0.11 → action: incentive
+e=0.11, f=0.22 → action: notify+feature
+e=0.11, f=0.33 → action: incentive
+e=0.11, f=0.44 → action: incentive
+e=0.11, f=0.56 → action: notify+incentive
+e=0.11, f=0.67 → action: notify+incentive
+e=0.11, f=0.78 → action: notify+incentive
+e=0.11, f=0.89 → action: notify+incentive
+e=0.11, f=1.00 → action: notify+incentive
+Saved: policy_heatmap.png
+
+============================================================
+SIMULATION STATISTICS
+============================================================
+Total transitions: 232785
+Total episodes: 5000
+Churn events: 688
+Churn rate: 13.76%
+Average trajectory length: 46.56 days
+
+Action distribution:
+  none                : 208333 (89.50%)
+  notify              :   2130 (0.92%)
+  feature             :  17799 (7.65%)
+  incentive           :   2423 (1.04%)
+  notify+feature      :   1136 (0.49%)
+  notify+incentive    :    964 (0.41%)
+
+Average reward: 0.5090
+
+============================================================
+------------------------------------------------------------
+Expected outcomes:
+  • Retention at day 50: ~55-70% (realistic churn)
+  • Engagement: rises early, then declines to ~0.45-0.55
+  • Fatigue: builds up to ~0.25-0.35 (meaningful accumulation)
+  • Policy: diverse actions
+    - Low engagement + low fatigue → incentive (yellow)
+    - Medium engagement → feature/notify (green/teal)
+    - High engagement + low fatigue → none (purple)
+    - High fatigue → none/notify (purple/blue)
+============================================================

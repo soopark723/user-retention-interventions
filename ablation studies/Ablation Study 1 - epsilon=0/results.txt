@@ -1,0 +1,84 @@
+
+Training DQN with online environment interaction...
+Episode 0 | Epsilon 0.200 | Reward 25.46
+Episode 50 | Epsilon 0.156 | Reward 12.99
+Episode 100 | Epsilon 0.121 | Reward 4.85
+Episode 150 | Epsilon 0.094 | Reward 3.14
+Episode 200 | Epsilon 0.073 | Reward 27.81
+Episode 250 | Epsilon 0.057 | Reward 17.59
+Episode 300 | Epsilon 0.044 | Reward 15.68
+Episode 350 | Epsilon 0.035 | Reward 6.58
+Episode 400 | Epsilon 0.027 | Reward 29.13
+Episode 450 | Epsilon 0.021 | Reward 24.40
+Episode 500 | Epsilon 0.020 | Reward 26.87
+Episode 550 | Epsilon 0.020 | Reward 23.96
+Episode 600 | Epsilon 0.020 | Reward 29.32
+Episode 650 | Epsilon 0.020 | Reward -6.14
+Episode 700 | Epsilon 0.020 | Reward 29.04
+Episode 750 | Epsilon 0.020 | Reward -5.78
+Episode 800 | Epsilon 0.020 | Reward 26.60
+Episode 850 | Epsilon 0.020 | Reward 36.42
+Episode 900 | Epsilon 0.020 | Reward 33.63
+Episode 950 | Epsilon 0.020 | Reward 30.60
+Training complete!
+Saved simulated_data.json
+
+Generating visualizations...
+Saved: retention_curve.png
+Saved: avg_engagement.png
+Saved: avg_fatigue.png
+
+Learned policy samples (engagement, fatigue, action):
+e=0.00, f=0.00 → action: feature
+e=0.00, f=0.11 → action: feature
+e=0.00, f=0.22 → action: feature
+e=0.00, f=0.33 → action: feature
+e=0.00, f=0.44 → action: feature
+e=0.00, f=0.56 → action: notify+feature
+e=0.00, f=0.67 → action: notify+feature
+e=0.00, f=0.78 → action: notify+feature
+e=0.00, f=0.89 → action: notify+feature
+e=0.00, f=1.00 → action: notify+feature
+e=0.11, f=0.00 → action: feature
+e=0.11, f=0.11 → action: feature
+e=0.11, f=0.22 → action: feature
+e=0.11, f=0.33 → action: feature
+e=0.11, f=0.44 → action: feature
+e=0.11, f=0.56 → action: notify+feature
+e=0.11, f=0.67 → action: notify+feature
+e=0.11, f=0.78 → action: notify+feature
+e=0.11, f=0.89 → action: notify+feature
+e=0.11, f=1.00 → action: notify+feature
+Saved: policy_heatmap.png
+
+============================================================
+SIMULATION STATISTICS
+============================================================
+Total transitions: 43945
+Total episodes: 1000
+Churn events: 245
+Churn rate: 24.50%
+Average trajectory length: 43.95 days
+
+Action distribution:
+  none                :  35037 (79.73%)
+  notify              :   1067 (2.43%)
+  feature             :   5406 (12.30%)
+  incentive           :    848 (1.93%)
+  notify+feature      :    524 (1.19%)
+  notify+incentive    :   1063 (2.42%)
+
+Average reward: 0.4456
+
+============================================================
+------------------------------------------------------------
+Expected outcomes:
+  • Retention at day 50: ~55-70% (realistic churn)
+  • Engagement: rises early, then declines to ~0.45-0.55
+  • Fatigue: builds up to ~0.25-0.35 (meaningful accumulation)
+  • Policy: diverse actions
+    - Low engagement + low fatigue → incentive (yellow)
+    - Medium engagement → feature/notify (green/teal)
+    - High engagement + low fatigue → none (purple)
+    - High fatigue → none/notify (purple/blue)
+============================================================
